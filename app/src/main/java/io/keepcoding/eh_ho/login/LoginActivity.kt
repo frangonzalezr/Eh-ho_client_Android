@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.google.android.material.snackbar.Snackbar
-import io.keepcoding.eh_ho.BuildConfig
 import io.keepcoding.eh_ho.R
 import io.keepcoding.eh_ho.data.RequestError
 import io.keepcoding.eh_ho.data.SignInModel
@@ -51,7 +50,12 @@ class LoginActivity : AppCompatActivity(),
             .commit()
     }
 
-    override fun onSignIn(signInModel: SignInModel) {
+    override fun onSignIn(signInModel: SignInModel, validateForm: () -> Boolean) {
+
+        if(validateForm()){
+            return
+        }
+
         enableLoading()
         UserRepo.signIn(this.applicationContext,
             signInModel,

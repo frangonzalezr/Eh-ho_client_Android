@@ -46,7 +46,7 @@ class SignInFragment: Fragment() {
                 inputPassword.text.toString()
             )
 
-            signInInteractionListener?.onSignIn(signInModel)
+            signInInteractionListener?.onSignIn(signInModel)  { validateForm() }
         }
     }
 
@@ -57,6 +57,27 @@ class SignInFragment: Fragment() {
 
     interface SignInInteractionListener {
         fun onGoToSignUp()
-        fun onSignIn(signInModel: SignInModel)
+        fun onSignIn(signInModel: SignInModel, validateForm: () -> Boolean)
+    }
+
+    // VALIDATION
+
+    private fun validateForm(): Boolean {
+        if(!formOK()) {
+            adviceCorrection()
+            return true
+        }
+        return false
+    }
+
+    private fun formOK(): Boolean {
+        return inputUsername.text.isNotEmpty() && inputPassword.text.isNotEmpty()
+    }
+
+    private fun adviceCorrection() {
+        if(inputUsername.text.isEmpty())
+            inputUsername.error = "Please, input your username"
+        if(inputPassword.text.isEmpty())
+            inputPassword.error = "Please, input your password"
     }
 }
