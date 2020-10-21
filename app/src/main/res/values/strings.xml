@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">Eh-Ho</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_password">Password</string>
+    <string name="label_login">Login</string>
+    <string name="label_topics">Topics</string>
+    <string name="label_create_new_account">Create new account</string>
+    <string name="label_sign_up">Sign up</string>
+    <string name="hint_confirm_password">Confirm password</string>
+    <string name="label_sign_in">Sign in</string>
+    <string name="hint_email">Email</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hint_title">Title</string>
+    <string name="hint_content">Content</string>
+    <string name="hint_author">Author</string>
+    <string name="label_send">Send</string>
+    <string name="error_empty">This field cannot be empty</string>
+
+    <plurals name="years">
+        <item quantity="one">%d year</item>
+        <item quantity="other">%d years</item>
+    </plurals>
+
+    <plurals name="months">
+        <item quantity="one">%d month</item>
+        <item quantity="other">%d months</item>
+    </plurals>
+
+    <plurals name="days">
+        <item quantity="one">%d day</item>
+        <item quantity="other">%d days</item>
+    </plurals>
+
+    <plurals name="hours">
+        <item quantity="one">%d hour</item>
+        <item quantity="other">%d hours</item>
+    </plurals>
+
+    <plurals name="minutes">
+        <item quantity="one">%d minute</item>
+        <item quantity="other">%d minutes</item>
+    </plurals>
+
+    <string name="minutes_zero">Just now</string>
+    <string name="label_loading">Loading</string>
+    <string name="label_logout">Logout</string>
+    <string name="error_not_registered">User not registered</string>
+    <string name="error_no_internet">No internet connection</string>
+    <string name="error_default">Something bad happened</string>
+    <string name="message_sign_up">Please check your email to finish the process</string>
+    <string name="error_duplicated_topic">Title has been already used</string>
+    <string name="label_creating_topic">Creating Topic</string>
+
+
+</resources>
