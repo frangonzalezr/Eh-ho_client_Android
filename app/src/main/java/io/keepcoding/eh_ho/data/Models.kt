@@ -1,16 +1,19 @@
 package io.keepcoding.eh_ho.data
 
+import android.os.Parcelable
+import android.text.Html
+import kotlinx.android.parcel.Parcelize
 import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.*
-
+@Parcelize
 data class Topic(
     val id: String = UUID.randomUUID().toString(),
     val title: String = "",
     val date: Date = Date(),
     val posts: Int = 0,
     val views: Int = 0
-) {
+) : Parcelable {
 
     companion object {
         fun parseTopicsList(response: JSONObject): List<Topic> {
@@ -92,5 +95,41 @@ data class Topic(
         )
 
         return TimeOffset(0, Calendar.MINUTE)
+    }
+}
+
+data class TopicPost(
+    val id: String = UUID.randomUUID().toString(),
+    val author: String= "",
+    val content: String = "",
+    val date: String = ""
+) {
+    companion object {
+        fun parsePostsList(response: JSONObject) : List<TopicPost> {
+            val objectList = response.getJSONObject("post_stream")
+                .getJSONArray("posts")
+            val posts = mutableListOf<TopicPost>()
+
+            for (i in 0 until objectList.length()) {
+                val parsedPost = parsePost(objectList.getJSONObject(i))
+                posts.add(parsedPost)
+            }
+            return posts
+        }
+        fun parsePost(jsonObject: JSONObject): TopicPost {
+            val date = jsonObject.getString("created_at")
+                .replace("Z", "+0000")
+
+            val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.getDefault())
+            val dateFormatted = dateFormat.parse(date) ?: Date()
+            val dateFormatString = SimpleDateFormat("yyyy-MM-dd")
+            val dateFormattedString = dateFormatString.format(dateFormatted)
+            return TopicPost(
+                id = jsonObject.getString("id"),
+                author = jsonObject.getString("username"),
+                content = Html.fromHtml(jsonObject.getString("cooked")).toString(),
+                date = dateFormattedString
+            )
+        }
     }
 }

@@ -34,4 +34,12 @@ object ApiRoutes {
         Uri.Builder()
             .scheme("https")
             .authority(BuildConfig.DiscourseDomain)
+
+    fun getTopicPosts(topicId: String) =
+        uriBuilder()
+            .appendPath("t")
+            .appendPath("${topicId}")
+            .appendPath("posts.json")
+            .build()
+            .toString()
 }

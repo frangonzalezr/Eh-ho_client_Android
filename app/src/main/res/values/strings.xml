@@ -51,6 +51,8 @@
     <string name="message_sign_up">Please check your email to finish the process</string>
     <string name="error_duplicated_topic">Title has been already used</string>
     <string name="label_creating_topic">Creating Topic</string>
+    <string name="creating_post_label">Creating Topic Post</string>
+    <string name="create">Create</string>
 
 
 </resources>
